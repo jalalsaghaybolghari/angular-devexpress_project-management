@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-devexpress__project-management';
+  title = 'project-management';
+
+  // test
+  helloWorld(){
+    console.log('hey');
+    
+  }
 }
