@@ -1,0 +1,25 @@
+#form {
+    width: 400px;
+  }
+  
+  .buttons-group {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+  
+    .dx-button {
+      font-weight: 500;
+    }
+  }
+  
+  .register-form {
+    width: fit-content;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    box-shadow: inset 0px 0px 14px #e6dfdf;
+    padding: 24px;
+  }
+  
