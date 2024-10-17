@@ -18,11 +18,8 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
-<<<<<<< HEAD
-=======
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@fortawesome/fontawesome-free": "^6.6.0",
->>>>>>> d1fb1a3 (feat: implemented font awesome project(#5))
     "devextreme": "24.1.5",
     "devextreme-angular": "24.1.5",
     "ngx-toastr": "^19.0.0",
