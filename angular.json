@@ -38,7 +38,8 @@
             ],
             "styles": [
               "node_modules/devextreme/dist/css/dx.light.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
