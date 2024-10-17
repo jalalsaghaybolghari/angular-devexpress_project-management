@@ -1,4 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { NavigationEnd, Router } from '@angular/router';
+import { MessageService } from '@shared/services';
+import { filter, Subject, takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -7,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
+  title = 'Project Management';
   defaultToastTimeOut: number = 3000;
   private destroy$ = new Subject<void>();
 
@@ -18,6 +23,21 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
     this.configAppToastMessage();
   }
+  ngOnInit() {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        const currentRoute = this.router.routerState.root.firstChild; // Memoization
+        const pageTitle = currentRoute?.snapshot.data['title'];
+        if (pageTitle) {
+          this._titleService.setTitle(pageTitle);
+        }
+      });
+  }
+
   private configAppToastMessage() {
     this._messageService.toastMessage$
       .pipe(takeUntil(this.destroy$))
