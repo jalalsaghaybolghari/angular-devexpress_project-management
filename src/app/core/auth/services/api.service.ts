@@ -12,6 +12,9 @@ export class AuthApiService {
     return this.http.post<LoginResult>(`${UrlUtility.serverUrl}/login`,loginInput);
   }
   register(registerInput: RegisterInput) {
-    return this.http.post<any>(`${UrlUtility.serverUrl}/register`,registerInput);
+    return this.http.post<unknown>(`${UrlUtility.serverUrl}/register`,registerInput);
+  }
+  logout(token: string) {
+    return this.http.post<unknown>(`${UrlUtility.serverUrl}/logout`,token);
   }
 }
