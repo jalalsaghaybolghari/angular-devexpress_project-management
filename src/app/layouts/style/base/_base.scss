@@ -1,0 +1,78 @@
+html, body {
+    margin: 0px;
+    min-height: 100%;
+    height: 100%;
+    font-size: 62.5%;
+
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .content {
+    line-height: 1.5;
+    flex-grow: 1;
+  
+    h2 {
+      font-size: 3rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  
+  .container {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+  }
+  
+  .layout-body {
+    flex: 1;
+    min-height: 0;
+  }
+  
+  .side-nav-outer-toolbar .dx-drawer {
+    height: calc(100% - 5.6rem)
+  }
+  
+  .content-block {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 2rem;
+  
+    .screen-x-small & {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+  }
+  
+  .responsive-paddings {
+    padding: 2rem;
+  
+    .screen-large & {
+      padding: 4rem;
+    }
+  }
+  
+  .dx-card.wide-card {
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-right: 0;
+    border-left: 0;
+  }
+  
+  .with-footer > .dx-scrollable-wrapper >
+  .dx-scrollable-container > .dx-scrollable-content {
+    height: 100%;
+  
+    & > .dx-scrollview-content {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+  }
+  
+  $side-panel-min-width: 6rem;
+  

@@ -1,13 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, NgModule, ViewChild } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { RegisterInput } from '@core/auth/auth.model';
 import { AuthApiService } from '@core/auth/services';
 import { MessageService } from '@shared/services';
 import { RegexUtility } from '@shared/utils/regex.utility';
 import { catchError, EMPTY, map, take } from 'rxjs';
-import { DxFormComponent, DxFormTypes } from 'devextreme-angular/ui/form';
+import { DxFormComponent, DxFormModule, DxFormTypes } from 'devextreme-angular/ui/form';
 import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
 import Validator from 'devextreme/ui/validator';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DxButtonModule } from 'devextreme-angular';
 
 type EditorOptions = DxTextBoxTypes.Properties;
 
@@ -139,3 +141,10 @@ export class RegisterComponent {
     ],
   };
 }
+
+@NgModule({
+  imports: [FontAwesomeModule, DxFormModule, DxButtonModule, RouterLink],
+  exports: [RegisterComponent],
+  declarations: [RegisterComponent],
+})
+export class RegisterModule {}
