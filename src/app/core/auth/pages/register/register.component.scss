@@ -1,24 +1,32 @@
+@import "../../../../layouts/style/main.scss";
+
 #form {
-    width: 400px;
+  width: 40rem;
+  @include calculateformWidth(50);
+}
+
+.buttons-group {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+
+  .dx-button {
+    font-weight: 500;
   }
-  
-  .buttons-group {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-  
-    .dx-button {
-      font-weight: 500;
-    }
-  }
-  
-  .register-form {
-    width: fit-content;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background-color: transparent;
-    box-shadow: inset 0px 0px 14px #e6dfdf;
-    padding: 24px;
-  }
-  
+}
+
+.register-form {
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 5%);
+  backdrop-filter: blur(18px);
+  background-color: transparent;
+  box-shadow: inset 0px 0px 14px #e6dfdf;
+  padding: 2.4rem;
+  border-radius: $base-border-radius;
+}
+
+.bg-video {
+  @include bg-video(0.5);
+}

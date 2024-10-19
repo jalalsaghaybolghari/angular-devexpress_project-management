@@ -1,5 +1,12 @@
 <div class="login">
-  <form (submit)="onLoginFormSubmit($event)" class="login-form">
+  <div class="bg-video">
+    <video class="bg-video__content" autoplay muted loop >
+      <source src="/assets/videos/video.mp4" type="video/mp4" />
+      <source src="/assets/videos/video.webm" type="video/webm" />
+      Your browser is not support!
+    </video>
+  </div>
+  <form (submit)="onLoginFormSubmit($event)" class="login-form" style="">
     <dx-form id="form" [(formData)]="form">
       <dxi-item itemType="group" caption="Login">
         <dxi-item dataField="username" [isRequired]="true">

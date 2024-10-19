@@ -1,9 +1,12 @@
+@import "../../../../layouts/style/main.scss";
+
 #form {
-  width: 400px;
+  width: 40rem;
+  @include calculateformWidth(50);
 }
 
 .buttons-group {
-  margin-top: 30px;
+  margin-top: 10rem;
   display: flex;
   justify-content: space-between;
 
@@ -18,7 +21,13 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: transparent;
+  backdrop-filter: blur(18px);
   box-shadow: inset 0px 0px 14px #e6dfdf;
-  padding: 24px;
+  padding: 2.4rem;
+  border-radius: $base-border-radius;
+}
+
+
+.bg-video{
+  @include bg-video(0.5);
 }
