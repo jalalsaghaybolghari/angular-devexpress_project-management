@@ -1,9 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, NgModule, ViewChild } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { LoginInput } from '@core/auth/auth.model';
 import { AuthApiService, AuthCommonService } from '@core/auth/services';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MessageService } from '@shared/services';
-import { DxFormComponent, DxFormTypes } from 'devextreme-angular/ui/form';
+import { DxButtonModule } from 'devextreme-angular';
+import {
+  DxFormComponent,
+  DxFormModule,
+  DxFormTypes,
+} from 'devextreme-angular/ui/form';
 import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
 import { catchError, EMPTY, map, take } from 'rxjs';
 
@@ -81,3 +87,10 @@ export class LoginComponent {
     ],
   };
 }
+
+@NgModule({
+  imports: [FontAwesomeModule, DxFormModule, DxButtonModule, RouterLink],
+  exports: [LoginComponent],
+  declarations: [LoginComponent],
+})
+export class LoginModule {}

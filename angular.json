@@ -38,9 +38,12 @@
             ],
             "styles": [
               "node_modules/devextreme/dist/css/dx.light.css",
-              "src/styles.scss",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/app/layouts/style/themes/theme.base.css",
+              "src/app/layouts/style/themes/theme.additional.css",
+              "src/app/layouts/style/main.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           },

@@ -14,7 +14,7 @@ export class AuthCommonService {
     if (loginResult) this.setLoginResult(loginResult);
   }
 
-  getLoginResult() {
+  getLoginResult() : LoginResult | null {
     const value = localStorage.getItem('loginResult');
     return value ? JSON.parse(value) : null;
   }

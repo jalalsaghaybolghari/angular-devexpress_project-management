@@ -1,29 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
-import { RegisterComponent } from '@core/auth/pages/register/register.component';
+import { CommonModule } from '@angular/common';
+import { RegisterModule } from '@core/auth/pages/register/register.component';
 import { AuthRoutingModule } from '@core/auth/auth-routing.module';
 import { AuthCommonService, AuthApiService } from '@core/auth/services';
-import { LoginComponent } from '@core/auth/pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { DxButtonModule, DxFormModule } from 'devextreme-angular';
 import { BrowserModule } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoginModule } from './pages/login/login.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
     CommonModule,
-    AuthRoutingModule,
     ReactiveFormsModule,
-    NgIf,
     RouterLink,
     HttpClientModule,
-    DxFormModule,
-    DxButtonModule,
-    FontAwesomeModule
+    LoginModule,
+    RegisterModule,
+    AuthRoutingModule,
   ],
   providers: [AuthCommonService, AuthApiService],
 })
