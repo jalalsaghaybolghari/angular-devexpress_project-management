@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginInput, LoginResult, RegisterInput } from '@core/auth/auth.model';
-import { UrlUtility } from '@shared/utils';
+import { UrlUtility } from '../../../shared/utils';
 
 @Injectable()
 export class AuthApiService {
@@ -14,7 +14,7 @@ export class AuthApiService {
     );
   }
   register(registerInput: RegisterInput) {
-    return this.http.post<unknown>(
+    return this.http.post<null>(
       `${UrlUtility.serverUrl}/register`,
       registerInput
     );

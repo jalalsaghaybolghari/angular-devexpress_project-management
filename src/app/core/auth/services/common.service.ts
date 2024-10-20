@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginResult } from '@core/auth/auth.model';
-import { LocalStorageService } from '@shared/services';
+import { LocalStorageService } from '../../../shared/services';
 
 @Injectable()
 export class AuthCommonService {

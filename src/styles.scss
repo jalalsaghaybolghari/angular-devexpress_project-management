@@ -1,13 +1,12 @@
 .toast-container {
-    direction: rtl;
-    .toast-error {
-      background-color: #be29298f !important;
-    }
-    .toast-success {
-      background-color: #2da152a8 !important;
-    }
-    .toast-info {
-      background-color: #5991d9b0 !important;
-    }
+  direction: rtl;
+  .toast-error {
+    background-color: #be29298f !important;
   }
-  
+  .toast-success {
+    background-color: #2da152a8 !important;
+  }
+  .toast-info {
+    background-color: #5991d9b0 !important;
+  }
+}

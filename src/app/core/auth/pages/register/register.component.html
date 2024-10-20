@@ -1,4 +1,11 @@
 <div class="register">
+  <div class="bg-video">
+    <video class="bg-video__content" autoplay muted loop >
+      <source src="/assets/videos/video.mp4" type="video/mp4" />
+      <source src="/assets/videos/video.webm" type="video/webm" />
+      Your browser is not support!
+    </video>
+  </div>
   <form (submit)="onRegisterFormSubmit($event)" class="register-form">
     <dx-form id="form" [(formData)]="form">
       <dxi-item itemType="group" caption="Register">
@@ -17,8 +24,6 @@
           [editorOptions]="phoneEditorOptions"
         >
           <dxo-label text="Phone Number"> </dxo-label>
-          <dxi-validation-rule type="required" message="Phone is required">
-          </dxi-validation-rule>
           <dxi-validation-rule
             type="pattern"
             [pattern]="phoneRegex"
@@ -90,7 +95,7 @@
             type="success"
             icon="fa-solid fa-user-plus"
             [useSubmitBehavior]="true"
-            [width]="120"
+            [width]="160"
           >
           </dx-button>
         </div>
