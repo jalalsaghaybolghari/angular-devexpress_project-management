@@ -45,20 +45,31 @@ This project is built using Angular 17 and incorporates various modern technolog
 
 ```
 project-management-system/
-├── e2e/                # End-to-end test folder (Cypress)
-├── src/                # Application source code
-│   ├── app/            # Core application code
-│   │   ├── modules/    # Project modules (projects, tasks)
-│   │   ├── components/ # Reusable components (login, register, etc.)
-│   ├── assets/         # Static assets (images, fonts, etc.)
-│   ├── environments/   # Environment-specific configurations
-├── jest.config.js      # Jest configuration for unit tests
-├── cypress.config.js   # Cypress configuration for e2e tests
-├── Dockerfile          # Docker configuration
-├── docker-compose.yml  # Docker compose for multi-container setup
-├── angular.json        # Angular CLI configuration
-├── package.json        # Project dependencies
-└── README.md           # Project documentation
+├── cypress/                # End-to-end test folder (Cypress)
+│   ├── e2e/
+│   │   ├── auth/
+│   │   ├   |── login-page.spec.cy.ts
+│   │   ├   |── register-page.spec.cy.ts
+│   ├── fixtures/
+│   │   ├── user.json
+│   ├── page-objects/
+│   │   ├── loginPage.ts
+│   │   ├── registerPage.ts
+├── src/                 # Application source code
+│   ├── app/             # Core application code
+│   │   ├── core/        # Project core modules (auth, interceptors,guard, login, register)
+│   │   ├── features/    # Project modules (projects, tasks)
+│   │   ├── layouts/     # Project style 
+│   │   ├── shared/      # Reusable shared components
+│   ├── assets/          # Static assets (images, fonts, etc.)
+│   ├── environments/    # Environment-specific configurations
+├── jest.config.js       # Jest configuration for unit tests
+├── cypress.config.js    # Cypress configuration for e2e tests
+├── Dockerfile           # Docker configuration
+├── docker-compose.yml   # Docker compose for multi-container setup
+├── angular.json         # Angular CLI configuration
+├── package.json         # Project dependencies
+└── README.md            # Project documentation
 ```
 
 ## Getting Started
