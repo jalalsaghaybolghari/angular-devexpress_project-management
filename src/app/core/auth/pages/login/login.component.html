@@ -6,7 +6,7 @@
       Your browser is not support!
     </video>
   </div>
-  <form (submit)="onLoginFormSubmit($event)" class="login-form" style="">
+  <form (submit)="onLoginFormSubmit($event)" class="login-form">
     <dx-form id="form" [(formData)]="form">
       <dxi-item itemType="group" caption="Login">
         <dxi-item dataField="username" [isRequired]="true">
@@ -30,7 +30,7 @@
             text="Register"
             type="default"
             [width]="120"
-            [routerLink]="['/register']"
+            (onClick)="onRegisterButtonClick()"
           >
           </dx-button>
 

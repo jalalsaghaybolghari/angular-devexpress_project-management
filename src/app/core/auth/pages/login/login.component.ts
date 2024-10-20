@@ -1,9 +1,9 @@
-import { Component, NgModule, ViewChild } from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { LoginInput } from '@core/auth/auth.model';
-import { AuthApiService, AuthCommonService } from '@core/auth/services';
+import { LoginInput } from '../../auth.model';
+import { AuthApiService, AuthCommonService } from '../../services';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MessageService } from '@shared/services';
+import { MessageService } from '../../../../shared/services';
 import { DxButtonModule } from 'devextreme-angular';
 import {
   DxFormComponent,
@@ -27,7 +27,8 @@ export class LoginComponent {
     private messageService: MessageService,
     private router: Router
   ) {}
-  @ViewChild(DxFormComponent, { static: true }) form!: DxFormComponent;
+  @ViewChild(DxFormComponent, { static: true })
+  form!: DxFormComponent;
 
   onLoginFormSubmit(e: any) {
     e.preventDefault();
@@ -63,7 +64,9 @@ export class LoginComponent {
     md: 2,
     lg: 2,
   };
-
+  onRegisterButtonClick() {
+      this.router.navigate(['/register']);
+  }
   changePasswordMode = (name: string) => {
     let editor = this.form.instance.getEditor(name);
     editor?.option(
