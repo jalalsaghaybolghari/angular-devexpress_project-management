@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MessageService } from '../../.././../shared/services';
 import { AuthApiService, AuthCommonService } from '../../services';
@@ -25,7 +26,7 @@ describe('Login component', () => {
           provide: AuthApiService,
           useValue: {
             login: jest.fn().mockImplementation((loginInput) => {
-              if (loginInput.username === 'validUser' && loginInput.password === 'validPassword') {
+              if (loginInput.username === 'jack1992' && loginInput.password === 'Jack/1992') {
                 return of({ token: 'validToken' });
               } else {
                 return throwError({ error: 'Invalid credentials' });

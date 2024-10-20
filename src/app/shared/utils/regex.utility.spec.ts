@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { RegexUtility } from './regex.utility';
 describe('regex-utils', () => {
   describe('compare regex with input', () => {

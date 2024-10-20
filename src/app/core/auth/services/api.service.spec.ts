@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals';
 import { TestBed } from '@angular/core/testing';
 import { AuthApiService } from './api.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -29,7 +30,7 @@ describe('AuthApiService', () => {
   describe('login', () => {
     it('should return loginResult', () => {
       const sampleLoginResult = {
-        username: 'validUser',
+        username: 'jack1992',
         firstname: 'jack',
         lastname: 'rabinson',
         mobile: '67762000000',
