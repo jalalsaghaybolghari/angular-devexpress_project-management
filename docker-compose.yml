@@ -1,0 +1,27 @@
+version: "3"
+services:
+  angular-app:
+    build: .
+    ports:
+      - "4200:80"
+    container_name: angular-app-cypress
+    networks:
+      - app-network
+
+  cypress:
+    image: cypress/included:10.10.0
+    environment:
+      - CYPRESS_baseUrl=http://angular-app-cypress:4200
+    volumes:
+      - ./cypress:/e2e/cypress
+      - ./cypress.config.ts:/e2e/cypress.config.ts
+    working_dir: /e2e
+    networks:
+      - app-network
+    depends_on:
+      - angular-app
+    command: ["npx", "cypress", "run"]
+
+networks:
+  app-network:
+    driver: bridge
