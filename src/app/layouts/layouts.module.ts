@@ -9,6 +9,7 @@ import { LayoutService } from './layout.service';
 import { LayoutComponent } from './layout.component';
 import { SideNavigationMenuComponent } from './components/side-navigation-menu/side-navigation-menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, UserPanelComponent, SideNavigationMenuComponent],
@@ -23,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DxScrollViewModule,
     DxDrawerModule,
     DxTreeViewModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SharedModule
     
   ],
   providers:[LayoutService],

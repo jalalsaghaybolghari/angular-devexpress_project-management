@@ -9,11 +9,11 @@ import { FeaturesModule } from '@features/features.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutsModule } from '@layouts/layouts.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthApiInterceptor } from './core/auth/interceptors/api.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,10 +23,10 @@ import { LayoutsModule } from '@layouts/layouts.module';
     FeaturesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass :'toast-top-right'
+      positionClass: 'toast-top-right'
     })
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthApiInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
