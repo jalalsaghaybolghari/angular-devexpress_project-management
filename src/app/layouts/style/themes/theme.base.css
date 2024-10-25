@@ -4010,7 +4010,8 @@
 }
 .dx-overlay-shader {
   pointer-events: auto;
-  background-color: rgba(0,0,0,.32);
+  background-color: rgba(0,0,0,.32) !important;
+  border-radius: 10px;
 }
 .dx-overlay-content {
   position: absolute;
@@ -9601,6 +9602,10 @@
   padding: 13px;
   border-radius: 50%;
   box-shadow: 0 6px 12px rgba(0,0,0,.25);
+  max-width: fit-content !important;
+  max-height: fit-content !important;
+  width: fit-content !important;
+  height: fit-content !important;
 }
 .dx-tagbox.dx-tagbox-default-template.dx-tagbox-only-select .dx-texteditor-input {
   border: none;

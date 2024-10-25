@@ -1,1 +1,40 @@
-<p>project-list works!</p>
+<h2 class="content-block">PROJECT LIST</h2>
+
+<ng-container [appLoadingPanel]="loadingData" [elementId]="'projectTableId'">
+  <div style="margin: 3rem">
+    <dx-data-grid
+      id="projectTableId"
+      class="dx-card wide-card"
+      [dataSource]="dataSource"
+      [showBorders]="false"
+      [focusedRowEnabled]="true"
+      [focusedRowIndex]="0"
+      [columnAutoWidth]="true"
+      [columnHidingEnabled]="true"
+      [allowColumnReordering]="true"
+      [allowColumnResizing]="true"
+      [showRowLines]="false"
+      [showBorders]="false"
+      [showColumnLines]="false"
+      [rowAlternationEnabled]="true"
+    >
+      <dxo-paging [pageSize]="5"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxi-column dataField="id" [width]="90" caption="Id" key="true" [hidingPriority]="2"> </dxi-column>
+      <dxi-column dataField="title" [width]="190" caption="Title" [hidingPriority]="8"> </dxi-column>
+      <dxi-column dataField="description" caption="Description" [hidingPriority]="6"> </dxi-column>
+      <dxi-column dataField="startDate" caption="Start Date" dataType="date" [hidingPriority]="3"> </dxi-column>
+      <dxi-column dataField="endDate" caption="Due Date" dataType="date" [hidingPriority]="4"> </dxi-column>
+
+      <dxo-toolbar>
+        <dxi-item location="after">
+          <div *dxTemplate>
+            <dx-button icon="refresh" (onClick)="refreshProjects()"> </dx-button>
+          </div>
+        </dxi-item>
+        <dxi-item name="columnChooserButton"></dxi-item>
+      </dxo-toolbar>
+    </dx-data-grid>
+  </div>
+</ng-container>

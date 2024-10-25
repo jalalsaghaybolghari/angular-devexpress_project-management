@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { LoginResult } from '@app/core/auth/auth.model';
+import { AuthCommonService } from '@app/core/auth/services';
 
 
 @Component({
@@ -9,6 +10,7 @@ import { LoginResult } from '@app/core/auth/auth.model';
 })
 
 export class UserPanelComponent {
+  userFullName: string;
   @Input()
   menuItems: any;
 
@@ -18,6 +20,9 @@ export class UserPanelComponent {
   @Input()
   user!: LoginResult | null;
 
-  constructor() {}
+  constructor(private authCommonService: AuthCommonService) {
+    const loginResult = authCommonService.getLoginResult() as LoginResult;
+    this.userFullName = `${loginResult.firstname} ${loginResult.lastname}`
+  }
 }
 

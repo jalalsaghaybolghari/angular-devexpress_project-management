@@ -9,8 +9,8 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [NoAuthGuard],
-    canActivateChild: [NoAuthGuard],
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',

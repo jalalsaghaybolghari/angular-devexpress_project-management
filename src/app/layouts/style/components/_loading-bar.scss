@@ -1,0 +1,43 @@
+@import "../abstracts/variables";
+
+$local-duration: 0.8s;
+$local-hide-duration: 0.2s;
+
+.loading-bar {
+  position: fixed;
+  z-index: 9999;
+  height: 5px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+.loading-bar__inner {
+  height: inherit;
+  width: 0;
+  transition: width 0s 0s, opacity 0s 0s;
+  background-color: $link-color;
+}
+.loading-bar--start {
+  .loading-bar__inner {
+    transition: width $local-duration 0s, opacity 0s 0s;
+    width: 20%;
+  }
+}
+.loading-bar--complete {
+  .loading-bar__inner {
+    width: 100%;
+    transition: width $local-duration 0s, opacity $local-hide-duration ($local-duration + 0.1s);
+    opacity: 0;
+  }
+}
+
+.dx-loadpanel-content {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+.dx-loadindicator {
+  width: 9rem;
+  height: 9rem;
+}
