@@ -28,6 +28,10 @@ const routes: Routes = [
       {
         path: 'task-managment',
         loadChildren: () => import('./task-managment/task-managment.module').then((m) => m.TaskManagmentModule)
+      },
+      {
+        path: 'user-managment',
+        loadChildren: () => import('./user-managment/user-managment.module').then((m) => m.UserManagmentModule)
       }
     ]
   },
