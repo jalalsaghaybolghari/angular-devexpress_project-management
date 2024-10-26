@@ -1,7 +1,7 @@
 import 'devextreme/data/odata/store';
 import ArrayStore from 'devextreme/data/array_store';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectResult } from '../project-managment.model';
 import { ProjectManagmentApiService } from '../services/api.service';
 import { take } from 'rxjs';
@@ -16,8 +16,12 @@ export class ProjectListComponent implements OnInit {
   priority: any[] | undefined;
   projectList: ProjectResult[] | undefined;
   loadingData: boolean = false;
-
-  constructor(private activatedRoute: ActivatedRoute, private projectManagmentApiService: ProjectManagmentApiService) {}
+  selectedProjectId: number | null = null;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private projectManagmentApiService: ProjectManagmentApiService
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data) => {
@@ -51,4 +55,17 @@ export class ProjectListComponent implements OnInit {
         }
       });
   }
+  onSelectProject(event: any) {
+    this.selectedProjectId = event.selectedRowKeys[0];
+  }
+  onAddNewProject() {
+    this.router.navigate(['/project-managment/add-project']);
+  }
+  onAddNewTask() {
+    this.router.navigate([`/task-managment/add-task/${this.selectedProjectId}`]);
+
+  }
+  onAddNewMember() {}
+  onShowMemberList() {}
+
 }

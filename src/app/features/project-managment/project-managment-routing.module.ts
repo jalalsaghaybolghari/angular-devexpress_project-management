@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectListResolverService } from './services/project-list-resolver.service';
+import { AddProjectComponent } from './add-project/add-project.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
       projectList: ProjectListResolverService
     },
     component: ProjectListComponent
+  },
+  {
+    path: 'add-project',
+    data: { title: 'Add Project - Project Management' },
+    component: AddProjectComponent
   }
 ];
 
