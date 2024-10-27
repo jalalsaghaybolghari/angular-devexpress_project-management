@@ -60,6 +60,7 @@ export class LoadingPanelDirective implements OnInit, OnChanges, OnDestroy {
       this.loadPanelRef.instance.indicatorSrc = "assets/images/Loading.gif";
     }
 
-    this.renderer.appendChild(this.el.nativeElement, this.loadPanelRef.location.nativeElement);
+    // this.renderer.appendChild(this.el.nativeElement, this.loadPanelRef.location.nativeElement);
+    this.viewContainerRef.insert(this.loadPanelRef.hostView);
   }
 }

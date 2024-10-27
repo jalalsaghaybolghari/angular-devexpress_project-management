@@ -10,7 +10,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutsModule } from '@layouts/layouts.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthApiInterceptor } from './core/auth/interceptors/api.interceptor';
+import { AuthApiInterceptor } from '@core/auth/interceptors/api.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { effects, reducers } from '@shared/store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +27,10 @@ import { AuthApiInterceptor } from './core/auth/interceptors/api.interceptor';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
-    })
+    }),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects)
+
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthApiInterceptor, multi: true }],
   bootstrap: [AppComponent]

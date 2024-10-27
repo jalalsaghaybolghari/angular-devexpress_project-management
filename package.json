@@ -26,6 +26,8 @@
     "@angular/router": "^17.0.0",
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@fortawesome/fontawesome-free": "^6.6.0",
+    "@ngrx/effects": "^17.0.1",
+    "@ngrx/store": "^17.0.1",
     "devextreme": "24.1.5",
     "devextreme-angular": "24.1.5",
     "ngx-toastr": "^19.0.0",
@@ -40,6 +42,7 @@
     "@cypress/schematic": "^2.5.2",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^29.5.13",
+    "cypress": "latest",
     "devextreme-cldr-data": "^1.0.3",
     "globalize": "^1.7.0",
     "jasmine-core": "~5.1.0",
@@ -50,7 +53,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.2.2",
-    "cypress": "latest"
+    "typescript": "~5.2.2"
   }
 }

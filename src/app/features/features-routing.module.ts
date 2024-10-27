@@ -15,30 +15,34 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'dashboard', // Redirect the empty path to 'dashboard'
-        pathMatch: 'full', // Make sure it only matches the full empty path
+        pathMatch: 'full' // Make sure it only matches the full empty path
       },
       {
         path: 'dashboard',
-        loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
       },
       {
         path: 'project-managment',
-        loadChildren: () =>
-          import('./project-managment/project-managment.module').then(
-            (m) => m.ProjectManagmentModule
-          ),
+        loadChildren: () => import('./project-managment/project-managment.module').then((m) => m.ProjectManagmentModule)
       },
-    ],
+      {
+        path: 'task-managment',
+        loadChildren: () => import('./task-managment/task-managment.module').then((m) => m.TaskManagmentModule)
+      },
+      {
+        path: 'user-managment',
+        loadChildren: () => import('./user-managment/user-managment.module').then((m) => m.UserManagmentModule)
+      }
+    ]
   },
   {
     path: '**', // handle undefined paths
-    component: PageNotFoundComponent,
-  },
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class FeatureRoutingModule {}

@@ -8,7 +8,6 @@
       [dataSource]="dataSource"
       [showBorders]="false"
       [focusedRowEnabled]="true"
-      [focusedRowIndex]="0"
       [columnAutoWidth]="true"
       [columnHidingEnabled]="true"
       [allowColumnReordering]="true"
@@ -17,10 +16,13 @@
       [showBorders]="false"
       [showColumnLines]="false"
       [rowAlternationEnabled]="true"
+      (onSelectionChanged)="onSelectProject($event)"
     >
       <dxo-paging [pageSize]="5"></dxo-paging>
       <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
       <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-selection mode="single"></dxo-selection>
+
       <dxi-column dataField="id" [width]="90" caption="Id" key="true" [hidingPriority]="2"> </dxi-column>
       <dxi-column dataField="title" [width]="190" caption="Title" [hidingPriority]="8"> </dxi-column>
       <dxi-column dataField="description" caption="Description" [hidingPriority]="6"> </dxi-column>
@@ -28,13 +30,56 @@
       <dxi-column dataField="endDate" caption="Due Date" dataType="date" [hidingPriority]="4"> </dxi-column>
 
       <dxo-toolbar>
-        <dxi-item location="after">
+        <dxi-item location="before" locateInMenu="auto">
           <div *dxTemplate>
             <dx-button icon="refresh" (onClick)="refreshProjects()"> </dx-button>
           </div>
         </dxi-item>
+        <dxi-item location="after" locateInMenu="auto" *ngIf="selectedProjectId">
+          <div *dxTemplate>
+            <dx-button stylingMode="text" text="Member List" type="success" [width]="140" (onClick)="onShowMemberList()">
+            </dx-button>
+          </div>
+        </dxi-item>
+        <dxi-item location="after" locateInMenu="auto" *ngIf="selectedProjectId">
+          <div *dxTemplate>
+            <dx-button stylingMode="text" text="Add Member" type="success" [width]="130" (onClick)="onAddNewMember()">
+            </dx-button>
+          </div>
+        </dxi-item>
+        <dxi-item location="after" locateInMenu="auto" *ngIf="selectedProjectId">
+          <div *dxTemplate>
+            <dx-button stylingMode="text" text="Add Task" type="success" [width]="120" (onClick)="onAddNewTask()"> </dx-button>
+          </div>
+        </dxi-item>
+        <dxi-item location="after" locateInMenu="never">
+          <div *dxTemplate>
+            <dx-button
+              stylingMode="contained"
+              text="Add Project"
+              type="success"
+              icon="fa-solid fa-folder-plus"
+              [width]="160"
+              (onClick)="onAddNewProject()"
+            >
+            </dx-button>
+          </div>
+        </dxi-item>
+
         <dxi-item name="columnChooserButton"></dxi-item>
       </dxo-toolbar>
     </dx-data-grid>
   </div>
 </ng-container>
+
+<dx-popup
+  style="max-width: 400px !important"
+  title="Add member to project"
+  [hideOnOutsideClick]="true"
+  [showCloseButton]="true"
+  [maxWidth]="400"
+  [(visible)]="newMemberModalVisible"
+  (onShown)="loadAddMemberContent()"
+>
+  <ng-template #addMemberModalContainer></ng-template>
+</dx-popup>
