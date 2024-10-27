@@ -8,9 +8,10 @@ import { SharedModule } from '@app/shared/shared.module';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { AddMemberComponent } from './components/add-member/add-member.component';
 import { DevExpressModule } from '@shared/dev-express/dev-express.module';
+import { MemberListComponent } from './components/member-list/member-list.component';
 
 @NgModule({
-  declarations: [ProjectListComponent, AddProjectComponent, AddMemberComponent],
+  declarations: [ProjectListComponent, AddProjectComponent, AddMemberComponent, MemberListComponent],
   imports: [CommonModule, ProjectManagmentRoutingModule, SharedModule, DevExpressModule],
   providers: [ProjectManagmentApiService, ProjectListResolverService]
 })

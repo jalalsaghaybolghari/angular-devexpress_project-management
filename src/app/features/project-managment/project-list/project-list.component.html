@@ -73,13 +73,12 @@
 </ng-container>
 
 <dx-popup
-  style="max-width: 400px !important"
-  title="Add member to project"
+  [title]="modalTitle"
   [hideOnOutsideClick]="true"
   [showCloseButton]="true"
-  [maxWidth]="400"
-  [(visible)]="newMemberModalVisible"
-  (onShown)="loadAddMemberContent()"
+  [maxWidth]="modalMaxWidth"
+  [(visible)]="modalVisible"
+  (onShown)="loadModalComponent()"
 >
-  <ng-template #addMemberModalContainer></ng-template>
+  <ng-template #modalContainer></ng-template>
 </dx-popup>
