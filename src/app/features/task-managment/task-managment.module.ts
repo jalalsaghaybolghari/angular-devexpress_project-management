@@ -8,7 +8,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   declarations: [TaskListComponent, AddTaskComponent],
-  imports: [CommonModule, TaskManagmentRoutingModule, SharedModule, DxDataGridModule, DxButtonModule],
+  imports: [CommonModule, TaskManagmentRoutingModule, SharedModule],
   providers: []
 })
 export class TaskManagmentModule {}

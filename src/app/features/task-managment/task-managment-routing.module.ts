@@ -6,8 +6,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'task-list', // Redirect the empty path to 'dashboard'
-    pathMatch: 'full' // Make sure it only matches the full empty path
+    redirectTo: 'task-list',
+    pathMatch: 'full' 
   },
   {
     path: 'task-list',

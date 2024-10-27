@@ -1,0 +1,18 @@
+.add-project {
+  margin: 1rem 3rem;
+}
+#form {
+  padding: 3rem;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.buttons-group {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: space-between;
+
+  .dx-button {
+    font-weight: 500;
+  }
+}
