@@ -1,0 +1,50 @@
+<div class="add-member">
+  <form >
+    <dx-form id="form" [(formData)]="form">
+      <dxi-item itemType="group" [isRequired]="true">
+        <dxo-label text="User"> </dxo-label>
+        <dx-drop-down-box
+          [dataSource]="dataSource"
+          [showClearButton]="true"
+          [(value)]="selectedUserId"
+          [(opened)]="isDropDownBoxOpened"
+          displayExpr="displayName"
+          valueExpr="id"
+        >
+          <dx-list
+            [dataSource]="dataSource"
+            selectionMode="single"
+            displayExpr="displayName"
+            valueExpr="id"
+            (onSelectionChanged)="changeDropDownBoxValue($event)"
+          >
+          </dx-list>
+        </dx-drop-down-box>
+        <dxi-validation-rule type="required" message="please select user"> </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item itemType="group" [isRequired]="true">
+        <dxo-label text="From Date"> </dxo-label>
+        <dx-date-box type="date" [value]="selectedFromDate" [min]="minDate" [inputAttr]="{ 'aria-label': 'Date' }"> </dx-date-box>
+        <dxi-validation-rule type="required" message="please select date"> </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item itemType="group">
+        <dxo-label text="To Date"> </dxo-label>
+        <dx-date-box type="date" [value]="selectedToDate" [min]="minDate" [inputAttr]="{ 'aria-label': 'Date' }"> </dx-date-box>
+      </dxi-item>
+      <dxi-item itemType="group" [colCountByScreen]="colCountByScreen">
+        <div class="buttons-group">
+          <dx-button
+            location="before"
+            stylingMode="contained"
+            text="Add member"
+            type="success"
+            icon="fa-solid fa-user-plus"
+            (onClick)="onAddMember()"
+            [width]="160"
+          >
+          </dx-button>
+        </div>
+      </dxi-item>
+    </dx-form>
+  </form>
+</div>

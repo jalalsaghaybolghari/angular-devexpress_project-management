@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { UrlUtility } from '@app/shared/utils';
 import { User, UserInput } from '../user-managment.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserManagmentApiService {
   constructor(private http: HttpClient) {}
 

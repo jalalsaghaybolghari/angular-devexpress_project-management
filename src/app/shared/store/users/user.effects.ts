@@ -13,7 +13,9 @@ export class UserEffect {
       ofType(UserAction.getUsers),
       mergeMap((action) => {
         return this.userManagmentApiService.getUsers(action.userInput).pipe(
-          map((users) => UserAction.getUsersSuccess({ users: users }))
+          map((users) => {
+            return UserAction.getUsersSuccess({ users: users });
+          })
           // catchError((error) => of(ProductAction.getRelatedProductsFailure({ error: error.message })))
         );
       })
