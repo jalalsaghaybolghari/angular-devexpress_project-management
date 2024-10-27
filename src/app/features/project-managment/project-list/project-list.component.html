@@ -73,11 +73,11 @@
 </ng-container>
 
 <dx-popup
-  [title]="modalTitle"
+  [title]="modalInput.title"
   [hideOnOutsideClick]="true"
   [showCloseButton]="true"
-  [maxWidth]="modalMaxWidth"
-  [(visible)]="modalVisible"
+  [maxWidth]="modalInput.maxWidth"
+  [(visible)]="modalInput.isVisable"
   (onShown)="loadModalComponent()"
 >
   <ng-template #modalContainer></ng-template>

@@ -13,6 +13,7 @@ import { User, UserInput } from '@app/features/user-managment/user-managment.mod
 import { select, Store } from '@ngrx/store';
 import { DxFormTypes } from 'devextreme-angular/ui/form';
 import { MemberListComponent } from '../components/member-list/member-list.component';
+import { ModalInput } from '@app/shared/shared.model';
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
@@ -26,10 +27,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   userList: User[] | undefined;
   loadingData: boolean = false;
   selectedProjectId: number | null = null;
-  modalVisible = false;
-  modalTitle: string = '';
-  modalRenderComponent: 'addMember' | 'memberlist' | null = null;
-  modalMaxWidth: number = 400;
+  modalInput: ModalInput = new ModalInput();
   colCountByScreen: DxFormTypes.GroupItem['colCountByScreen'] = {
     xs: 2,
     sm: 2,
@@ -95,23 +93,26 @@ export class ProjectListComponent implements OnInit, OnDestroy {
     this.router.navigate([`/task-managment/add-task/${this.selectedProjectId}`]);
   }
   onAddNewMember() {
-    this.modalVisible = true;
-    this.modalTitle = 'add member to project';
-    this.modalRenderComponent = 'addMember';
+    this.modalInput.isVisable = true;
+    this.modalInput.title = 'add member to project';
+    this.modalInput.component = 'addMember';
+    this.modalInput.maxWidth = 400;
   }
   onShowMemberList() {
-    this.modalVisible = true;
-    this.modalTitle = 'project member list';
-    this.modalRenderComponent = 'memberlist';
+    this.modalInput.isVisable = true;
+    this.modalInput.title = 'project member list';
+    this.modalInput.component = 'memberlist';
+    this.modalInput.maxWidth = 750;
   }
   loadModalComponent() {
     this.modalContainer.clear();
-    if (this.modalRenderComponent == 'addMember') {
+    if (this.modalInput.component == 'addMember') {
       const componentRef = this.modalContainer.createComponent(AddMemberComponent);
       componentRef.instance.users = this.userList;
       componentRef.instance.projectId = this.selectedProjectId as number;
-    } else if (this.modalRenderComponent == 'memberlist') {
+    } else if (this.modalInput.component == 'memberlist') {
       const componentRef = this.modalContainer.createComponent(MemberListComponent);
+      componentRef.instance.projectId = this.selectedProjectId as number;
     }
   }
 

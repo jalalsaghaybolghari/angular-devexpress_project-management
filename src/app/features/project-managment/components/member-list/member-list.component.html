@@ -1,1 +1,28 @@
-<p>member-list works!</p>
+<ng-container>
+  <div style="margin: 3rem">
+    <dx-data-grid
+      id="projectMemberTableId"
+      class="dx-card wide-card"
+      [dataSource]="dataSource"
+      [showBorders]="false"
+      [columnAutoWidth]="true"
+      [columnHidingEnabled]="true"
+      [allowColumnResizing]="true"
+      [showRowLines]="false"
+      [showBorders]="false"
+      [showColumnLines]="false"
+      [rowAlternationEnabled]="true"
+    >
+      <dxo-paging [pageSize]="5"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-selection mode="single"></dxo-selection>
+
+      <dxi-column dataField="id" [width]="90" caption="Id" key="true" [hidingPriority]="2"> </dxi-column>
+      <dxi-column dataField="userName" [width]="150" caption="User Name" [hidingPriority]="8"> </dxi-column>
+      <dxi-column dataField="projectRole" [width]="100" caption="User Role" [hidingPriority]="6"> </dxi-column>
+      <dxi-column dataField="fromDate"  [width]="120" caption="Start Date" dataType="date" [hidingPriority]="3"> </dxi-column>
+      <dxi-column dataField="toDate" [width]="120" caption="Due Date" dataType="date" [hidingPriority]="4"> </dxi-column>
+    </dx-data-grid>
+  </div>
+</ng-container>
