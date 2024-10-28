@@ -1,19 +1,19 @@
 import 'devextreme/data/odata/store';
 import ArrayStore from 'devextreme/data/array_store';
-import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectResult } from '../project-managment.model';
 import { ProjectManagmentApiService } from '../services/api.service';
 import { Subject, take, takeUntil } from 'rxjs';
 import { AddMemberComponent } from '../components/add-member/add-member.component';
-import { AppStateInterface } from '@app/shared/store/app-state.interface';
+import { AppStateInterface } from '@shared/store/app-state.interface';
 import * as UserAction from '@shared/store/users/user.actions';
 import * as UserSelector from '@shared/store/users/user.selectors';
-import { User, UserInput } from '@app/features/user-managment/user-managment.model';
+import { User, UserInput } from '@features/user-managment/user-managment.model';
 import { select, Store } from '@ngrx/store';
 import { DxFormTypes } from 'devextreme-angular/ui/form';
 import { MemberListComponent } from '../components/member-list/member-list.component';
-import { ModalInput } from '@app/shared/shared.model';
+import { ModalInput } from '@shared/shared.model';
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
@@ -24,10 +24,16 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   dataSource: any;
   priority: any[] | undefined;
   projectList: ProjectResult[] | undefined;
-  userList: User[] | undefined;
+  userList: User[] = new Array<User>();
   loadingData: boolean = false;
   selectedProjectId: number | null = null;
-  modalInput: ModalInput = new ModalInput();
+  modalInput: ModalInput = {
+    isVisible: false,
+    title: '',
+    maxWidth: 750,
+    component: null,
+    data: {}
+  };
   colCountByScreen: DxFormTypes.GroupItem['colCountByScreen'] = {
     xs: 2,
     sm: 2,
@@ -93,27 +99,22 @@ export class ProjectListComponent implements OnInit, OnDestroy {
     this.router.navigate([`/task-managment/add-task/${this.selectedProjectId}`]);
   }
   onAddNewMember() {
-    this.modalInput.isVisable = true;
-    this.modalInput.title = 'add member to project';
-    this.modalInput.component = 'addMember';
-    this.modalInput.maxWidth = 400;
+    this.modalInput = {
+      isVisible: true,
+      title: 'Add New Member',
+      maxWidth: 500,
+      component: AddMemberComponent,
+      data: { projectId: this.selectedProjectId, users: this.userList }
+    };
   }
   onShowMemberList() {
-    this.modalInput.isVisable = true;
-    this.modalInput.title = 'project member list';
-    this.modalInput.component = 'memberlist';
-    this.modalInput.maxWidth = 750;
-  }
-  loadModalComponent() {
-    this.modalContainer.clear();
-    if (this.modalInput.component == 'addMember') {
-      const componentRef = this.modalContainer.createComponent(AddMemberComponent);
-      componentRef.instance.users = this.userList;
-      componentRef.instance.projectId = this.selectedProjectId as number;
-    } else if (this.modalInput.component == 'memberlist') {
-      const componentRef = this.modalContainer.createComponent(MemberListComponent);
-      componentRef.instance.projectId = this.selectedProjectId as number;
-    }
+    this.modalInput = {
+      isVisible: true,
+      title: 'Project Member List',
+      maxWidth: 750,
+      component: MemberListComponent,
+      data: { projectId: this.selectedProjectId }
+    };
   }
 
   ngOnDestroy() {

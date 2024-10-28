@@ -3,6 +3,7 @@
 <ng-container [appLoadingPanel]="loadingData" [elementId]="'projectTableId'">
   <div style="margin: 3rem">
     <dx-data-grid
+      #showModal
       id="projectTableId"
       class="dx-card wide-card"
       [dataSource]="dataSource"
@@ -72,13 +73,6 @@
   </div>
 </ng-container>
 
-<dx-popup
-  [title]="modalInput.title"
-  [hideOnOutsideClick]="true"
-  [showCloseButton]="true"
-  [maxWidth]="modalInput.maxWidth"
-  [(visible)]="modalInput.isVisable"
-  (onShown)="loadModalComponent()"
->
-  <ng-template #modalContainer></ng-template>
-</dx-popup>
+@defer (on interaction(showModal)) {
+  <app-modal [modalInput]="modalInput"></app-modal>
+}

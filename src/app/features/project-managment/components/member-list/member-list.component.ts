@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewChild, inject } from '@angular/core';
 import { ProjectManagmentApiService } from '../../services/api.service';
 import { ProjectMembersResult } from '../../project-managment.model';
 import { take } from 'rxjs';
 import ArrayStore from 'devextreme/data/array_store';
+
 export interface DialogData {
   projectId: number;
 }
@@ -10,7 +11,8 @@ export interface DialogData {
 @Component({
   selector: 'app-member-list',
   templateUrl: './member-list.component.html',
-  styleUrl: './member-list.component.scss'
+  styleUrl: './member-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MemberListComponent implements OnInit {
   @Input() projectId: number | undefined;
@@ -18,9 +20,7 @@ export class MemberListComponent implements OnInit {
   dataSource: any;
   priority: any[] | undefined;
 
-
-
-  constructor(private projectManagmentApiService: ProjectManagmentApiService) {}
+  constructor(private projectManagmentApiService: ProjectManagmentApiService, private cdr: ChangeDetectorRef) {}
   ngOnInit(): void {
     this.loadInitData();
   }
@@ -40,17 +40,16 @@ export class MemberListComponent implements OnInit {
             expand: 'ResponsibleEmployee',
             select: ['id', 'userName', 'projectRole', 'fromDate', 'toDate']
           };
+          this.cdr.markForCheck();
         },
-        error: (err) => console.error('Observable emitted an error: ' + err),
+        error: (err) => console.error('Observable emitted an error: ' + err)
       });
-    
 
-
-      this.priority = [
-        { name: 'High', value: 4 },
-        { name: 'Urgent', value: 3 },
-        { name: 'Normal', value: 2 },
-        { name: 'Low', value: 1 }
-      ];
+    this.priority = [
+      { name: 'High', value: 4 },
+      { name: 'Urgent', value: 3 },
+      { name: 'Normal', value: 2 },
+      { name: 'Low', value: 1 }
+    ];
   }
 }
