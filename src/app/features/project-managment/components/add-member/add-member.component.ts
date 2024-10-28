@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { LoginResult } from '@core/auth/auth.model';
 import { AuthCommonService } from '@core/auth/services';
 import { User } from '@features/user-managment/user-managment.model';
@@ -12,7 +12,9 @@ import { MessageService } from '@shared/services';
 @Component({
   selector: 'add-member',
   templateUrl: './add-member.component.html',
-  styleUrl: './add-member.component.scss'
+  styleUrl: './add-member.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class AddMemberComponent implements OnInit {
   constructor(

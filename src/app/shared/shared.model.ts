@@ -10,13 +10,13 @@ export class ToastMessage {
 }
 
 export class ModalInput {
-  isVisable: boolean;
   title: string;
-  component: 'addMember' | 'memberlist' | null;
   maxWidth: number;
-
-  constructor() {
-    this.isVisable = false;
+  isVisible: boolean;
+  component: any; // Can be used for dynamic component types
+  data?: any; // Optional data to pass to the component
+    constructor() {
+    this.isVisible = false;
     this.title = '';
     this.component = null;
     this.maxWidth = 400;
